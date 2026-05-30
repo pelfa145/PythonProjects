@@ -16,7 +16,7 @@ def deleteTask():
 
 def viewTasks():
     for i in todo:
-        input(f"-{i}\nPress to anything to continue..")
+        print(f"-{i}")
         
 while True:
 
@@ -30,7 +30,7 @@ while True:
         continue
     elif int(userInput)==3:
         viewTasks()
-        print(userInput)
+        input("Press anything to continue..")
         continue
     elif userInput=="4":
         break
