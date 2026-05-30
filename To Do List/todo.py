@@ -18,8 +18,6 @@ def viewTasks():
     for i in todo:
         input(f"-{i}\nPress to anything to continue..")
         
-
-
 while True:
 
     userInput=input("1.Add a task\n2.Remove a task\n3.View tasks\n4.Exit\nChoose option: ") 
