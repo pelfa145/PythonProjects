@@ -57,11 +57,11 @@ while True:
             pets.append(pet)    
         else: 
             print("Choose between 2 numbers")
-    if choice == 2:
+    elif choice == 2:
         for i in pets:
             print(f"{i}")
         input("Press to continue..")
         
-    if choice == 3:
+    elif choice == 3:
         break
     else: print("Choose between 1-3")
