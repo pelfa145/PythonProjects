@@ -14,7 +14,7 @@ while True:
         anse = "YES"
     else:
         anse = "NO"
-    final=len(attempts) + 1
+    final = len(attempts) + 1
     attempts.append(final)
     ans.append(anse)
     choice = input("More? y/n: ")

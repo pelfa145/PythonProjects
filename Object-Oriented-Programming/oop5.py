@@ -25,6 +25,7 @@ class Cat(Pet):
     def __str__(self):
         return f"Pet: Cat, Name: {self.name}, Breed:{self.breed}, Age:{self.age}"
 
+
 pets = []
 
 while True:
@@ -46,7 +47,7 @@ while True:
             age = int(age)
             pet = Dog(name, breed, age)
             pets.append(pet)
-            
+
         elif petclass == 2:
 
             name = input("What's the cat's name?: ")
@@ -54,14 +55,15 @@ while True:
             age = input("How old is the cat?: ")
             age = int(age)
             pet = Cat(name, breed, age)
-            pets.append(pet)    
-        else: 
+            pets.append(pet)
+        else:
             print("Choose between 2 numbers")
     elif choice == 2:
         for i in pets:
             print(f"{i}")
         input("Press to continue..")
-        
+
     elif choice == 3:
         break
-    else: print("Choose between 1-3")
+    else:
+        print("Choose between 1-3")
