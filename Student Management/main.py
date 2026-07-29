@@ -1,20 +1,17 @@
-quitMenu = 0
-
+#Student Management
 
 def printStudent(index):
     print(
         f"Found! \n====================\nStudent: {freshmen[index]['studentname']}\nAge: {freshmen[index]['age']}\nCourse: {freshmen[index]['course']}\nStudent ID: {freshmen[index]['studentid']}\n===================="
     )
+    
     input("Press anything to continue...")
 
 
 def searchStudent(studentid):
-    b = 0
-    for i in freshmen:
+    for index,i in enumerate(freshmen):
         if studentid == i["studentid"]:
-            return b
-        else:
-            b += 1
+            return index
     return -1
 
 
@@ -41,10 +38,18 @@ def editStudent(studentIndex):
 
 def removeStudent():
     printRecords()
-    choice = input("From top to bottom 1-" + str(len(freshmen)) + ": ")
-    choice = int(choice)
-    choice -= 1
-    freshmen.pop(choice)
+    choice = input("Input Student ID: ")
+    try:
+        for index,i in enumerate(freshmen):
+            if choice == i["studentid"]:
+                print(f"Deleted {freshmen[index]['studentname']}")
+                freshmen.pop(index)
+                
+            else: 
+                continue    
+    except:
+        print("Error")
+        
 
 
 def printRecords():
@@ -54,7 +59,7 @@ def printRecords():
     else:
         for i in freshmen:
             print(f"{i["studentid"]}|{i["studentname"]}|{i['age']}|{i['course']}")
-
+        print("=======================")
 
 # print(f"=========\nName: {i["studentname"]}\nAge: {i["age"]}\nCourse: {i["course"]}\nStudent ID: {i["studentid"]}\n=========")
 
@@ -80,13 +85,17 @@ def showMenu():
         )
         choice = input("Choose an option 1-6: ")
         match choice:
+            
             case "1":
-                return addStudent()
+                addStudent()
+            
             case "2":
                 removeStudent()
+            
             case "3":
                 printRecords()
-                input("=======================\nPress anything to continue..")
+                input("Press anything to continue..")
+            
             case "4":
                 x = input("Student ID of Student: ")
                 result = searchStudent(x)
@@ -96,6 +105,7 @@ def showMenu():
                     )
                 else:
                     printStudent(result)
+            
             case "5":
                 x = input("Student ID of Student: ")
                 result = searchStudent(x)
@@ -114,10 +124,12 @@ def showMenu():
                         input("Changed Student age.")
                     elif returned == 3:
                         input("Changed Student course.")
-                
 
             case "6":
                 break
+            
+            case _:
+                input("Choose a number between 1-6")
 
 
 freshmen = [
@@ -127,15 +139,29 @@ freshmen = [
         "age": 18,
         "studentname": "Jadon Cyrus Paran",
     },
-    {"studentid": "2026001", "studentname": "John Doe", "age": 19, "course": "BSIT"},
-    {"studentid": "2026002", "studentname": "Jane Smith", "age": 18, "course": "BSCS"},
+    {
+        "studentid": "2026001",
+        "studentname": "John Doe",
+        "age": 19,
+        "course": "BSIT"},
+    
+    {
+        "studentid": "2026002",
+        "studentname": "Jane Smith",
+        "age": 18,
+        "course": "BSCS"},
     {
         "studentid": "2026003",
         "studentname": "Michael Santos",
         "age": 20,
         "course": "BSIT",
     },
-    {"studentid": "2026004", "studentname": "Sarah Cruz", "age": 19, "course": "BSIS"},
+    {
+        "studentid": "2026004",
+        "studentname": "Sarah Cruz",
+        "age": 19,
+        "course": "BSIS"
+    },
     {
         "studentid": "2026005",
         "studentname": "David Reyes",
