@@ -29,11 +29,12 @@ def editStudent(studentIndex):
             try:
                 age = int(ageCheck)
                 
-                if not int(ageCheck) > 0:
+                if not ageCheck > 0:
                     print("Error try again")
                     return
             except ValueError:
                 print("Error: Try again")
+                return
             freshmen[studentIndex]["age"] = age
             return 2
         case "3":
@@ -47,16 +48,13 @@ def editStudent(studentIndex):
 def removeStudent():
     printRecords()
     choice = input("Input Student ID: ")
-    try:
-        for index,i in enumerate(freshmen):
-            if choice == i["studentid"]:
-                print(f"Deleted {freshmen[index]['studentname']}")
-                freshmen.pop(index)
+    if searchStudent(choice) != -1:
+        print(f"No Student ID: {choice} Found!")
+        return
+    else: 
+        studentID = choice
+        freshmen.pop(studentID)
                 
-            else: 
-                continue    
-    except:
-        print("Error")
         
 
 
@@ -72,13 +70,15 @@ def printRecords():
 # print(f"=========\nName: {i["studentname"]}\nAge: {i["age"]}\nCourse: {i["course"]}\nStudent ID: {i["studentid"]}\n=========")
 
 
+
+#Adding student function
 def addStudent():
     studentName = input("What's your name?: ")
     ageCheck = input("How old are you?: ")
 
     try:
         age = int(ageCheck)
-        if not int(ageCheck) > 0:
+        if not ageCheck > 0:
             print("Error try again")
             return
     except ValueError:
