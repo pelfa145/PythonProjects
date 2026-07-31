@@ -48,13 +48,16 @@ def editStudent(studentIndex):
 def removeStudent():
     printRecords()
     choice = input("Input Student ID: ")
-    if searchStudent(choice) != -1:
-        print(f"No Student ID: {choice} Found!")
-        return
-    else: 
-        studentID = choice
-        freshmen.pop(studentID)
+    try:
+        for index,i in enumerate(freshmen):
+            if choice == i["studentid"]:
+                print(f"Deleted {freshmen[index]['studentname']}")
+                freshmen.pop(index)
                 
+            else: 
+                continue    
+    except:
+        print("Error")
         
 
 
