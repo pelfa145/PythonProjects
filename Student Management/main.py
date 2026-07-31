@@ -25,8 +25,16 @@ def editStudent(studentIndex):
             freshmen[studentIndex]["studentname"] = change
             return 1
         case "2":
-            change = input("New age: ")
-            freshmen[studentIndex]["age"] = int(change)
+            ageCheck = input("New age: ")
+            try:
+                age = int(ageCheck)
+                
+                if not int(ageCheck) > 0:
+                    print("Error try again")
+                    return
+            except ValueError:
+                print("Error: Try again")
+            freshmen[studentIndex]["age"] = age
             return 2
         case "3":
             change = input("New course: ")
@@ -67,12 +75,17 @@ def printRecords():
 def addStudent():
     studentName = input("What's your name?: ")
     ageCheck = input("How old are you?: ")
-    if int(ageCheck) < 0:
-        print("Age must be above 1.")
+    try:
+        if not int(ageCheck) > 0:
+            print("Error try again")
+            return
+    except:
+        print("Error")
         return
-    elif ageCheck.isdigit():
+    try:
         age = int(ageCheck)
-     
+    except ValueError:
+        print("Error: Try again")  
     course = input("What course?: ")
     studentID = input("What's your student id?: ")
     if studentName == '' or course == '' or age is None or studentID == '':
