@@ -75,19 +75,22 @@ def printRecords():
 def addStudent():
     studentName = input("What's your name?: ")
     ageCheck = input("How old are you?: ")
+
     try:
+        age = int(ageCheck)
         if not int(ageCheck) > 0:
             print("Error try again")
             return
-    except:
-        print("Error")
-        return
-    try:
-        age = int(ageCheck)
     except ValueError:
-        print("Error: Try again")  
+        print("Error: Try again")
+        return
     course = input("What course?: ")
-    studentID = input("What's your student id?: ")
+    studentIDCheck = input("What's your student id?: ")
+    if searchStudent(studentIDCheck) != -1:
+        print("Duplicate ID found try again")
+        return
+    else: 
+        studentID = studentIDCheck
     if studentName == '' or course == '' or age is None or studentID == '':
         print("Please complete the fields.")
         return 
