@@ -66,9 +66,18 @@ def printRecords():
 
 def addStudent():
     studentName = input("What's your name?: ")
-    age = input("How old are you?: ")
+    ageCheck = input("How old are you?: ")
+    if int(ageCheck) < 0:
+        print("Age must be above 1.")
+        return
+    elif ageCheck.isdigit():
+        age = int(ageCheck)
+     
     course = input("What course?: ")
     studentID = input("What's your student id?: ")
+    if studentName == '' or course == '' or age is None or studentID == '':
+        print("Please complete the fields.")
+        return 
     listappend = {
         "studentid": studentID,
         "course": course,
