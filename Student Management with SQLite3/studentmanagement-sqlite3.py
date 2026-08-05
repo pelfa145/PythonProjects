@@ -13,8 +13,19 @@ def StudentIDasList():
 
 def addStudent():
     studentids = StudentIDasList() 
-    studentid = int(studentids[len(studentids)-1])
+    try:
+        studentid = int(studentids[len(studentids)-1])
+    except:
+        name = input("Input student's name: ")
+        age = input("Input student's age: ")
+        course = input("Input student's course: ")
+        cursor.execute("""INSERT INTO student (studentid,name,age,course)
+                        VALUES (?,?,?,?)""",(2026000, name, age, course, ))
+        cursor.commit()
+        print(f"Added {name.split()[0]} in students")
+        return
     studentid += 1
+    
     name = input("What is the your name: ")
     age = int(input("What is the your age:"))
     course = input("Input your course: ")
@@ -44,7 +55,6 @@ def viewAllStudents():
     
     
     
-
     
 def showMenu():
     while True:
