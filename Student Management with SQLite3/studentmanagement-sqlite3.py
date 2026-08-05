@@ -21,7 +21,7 @@ def addStudent():
         course = input("Input student's course: ")
         cursor.execute("""INSERT INTO student (studentid,name,age,course)
                         VALUES (?,?,?,?)""",(2026000, name, age, course, ))
-        cursor.commit()
+        conn.commit()
         print(f"Added {name.split()[0]} in students")
         return
     studentid += 1
