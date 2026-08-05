@@ -15,7 +15,7 @@ def addStudent():
     studentids = StudentIDasList() 
     try:
         studentid = int(studentids[len(studentids)-1])
-    except:
+    except IndexError:
         name = input("Input student's name: ")
         age = input("Input student's age: ")
         course = input("Input student's course: ")
